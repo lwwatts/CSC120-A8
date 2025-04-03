@@ -88,6 +88,31 @@ public class Cafe extends Building implements CafeRequirements{
         this.nCreams += nCreams;
         this.nCups += nCups;
     }
+
+    // Overridden Building methods
+    
+    /**
+    * Moves the user to a given floor in the building if the user is in the building and able to go to that floor
+    */
+    public void goToFloor(int floorNum) {
+        if (this.activeFloor == -1) {
+            throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");
+        }
+        if (floorNum < 1 || floorNum > this.nFloors) {
+            throw new RuntimeException("Invalid floor number. Valid range for this Building is 1-" + this.nFloors +".");
+        }
+        if (floorNum > 1){
+            throw new RuntimeException("You are not allowed on any floors of this cafe except the first floor.");
+        }
+    }
+
+    /**
+    * Prints out all the functions of this class that the user can call
+    */
+    public void showOptions() {
+        super.showOptions();
+        System.out.println(" + sellCoffee(size, nSugar, nCream)");
+    }
     
     public static void main(String[] args) {
         
