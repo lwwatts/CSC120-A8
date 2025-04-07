@@ -74,6 +74,7 @@ public class House extends Building implements HouseRequirements{
   public void moveIn(Student s){
     if(capacity == -1 || this.residents.size() < capacity){
       this.residents.add(s);
+      System.out.println(s.getName() + " has moved into " + this.name);
     }
     else{
       System.out.println("Sorry, " + s.getName() + " cannot be added to this house because this house is full.");
@@ -88,6 +89,7 @@ public class House extends Building implements HouseRequirements{
     for(Student s: students){
       if(capacity == -1 || this.residents.size() < capacity){
         this.residents.add(s);
+        System.out.println(s.getName() + " has moved into " + this.name);
       }
       else{
         System.out.println("Sorry, " + s.getName() + " cannot be added to this house because this house is full.");
@@ -102,9 +104,11 @@ public class House extends Building implements HouseRequirements{
   public Student moveOut(Student s){
     if(this.residents.contains(s)){
       this.residents.remove(s);
+      System.out.println(s.getName() + " has moved out of " + this.name);
       return s;
     }
     else{
+      System.out.println(s.getName() + " cannot move out of " + this.name + " because they do not live there");
       return null;
     }
   }
@@ -162,9 +166,17 @@ public class House extends Building implements HouseRequirements{
   }
 
   public static void main(String[] args) {
-    // House jordan = new House("Jordan", null, 5, false);
-    // House chapin = new House("Chapin", null, 4, true);
-
+    // House jordan = new House("Jordan", null, 5, false, true, 2);
+    // House chapin = new House("Chapin", null, 4, true, false);
+    // jordan.moveIn(new Student("test", "99XXXXXXX", 2028));
+    // jordan.moveIn(new Student("Test2", "990XXXXXXXXXX", 2025));
+    // jordan.moveIn(new Student("Test3", "991XXXXXXXXXX", 2027));
+    // ArrayList<Student> testList = new ArrayList<>();
+    // testList.add(new Student("s1", "99XXXXXXX", 2028));
+    // testList.add(new Student("s2", "99XXXXXXX", 2028));
+    // chapin.moveIn(testList);
+    // chapin.moveOut(testList);
+    // jordan.moveOut(new Student("fake", "fake", 0000));
   }
 
 }

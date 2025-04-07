@@ -111,7 +111,12 @@ public class Cafe extends Building implements CafeRequirements{
     }
     
     public static void main(String[] args) {
-        
+        // Cafe testCafe = new Cafe("Test", "unknown", 2, 20, 10, 10, 10);
+        // testCafe.showOptions();
+        // testCafe.sellCoffee();
+        // testCafe.sellCoffee(20, 6, 8);
+        // testCafe.enter();
+        // testCafe.exit();
     }
     
 }
