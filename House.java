@@ -6,9 +6,10 @@ public class House extends Building implements HouseRequirements{
   private ArrayList<Student> residents;
   private boolean hasDiningRoom;
   private boolean hasElevator;
+  private int capacity;
 
   /**
-   * Constructor for House class
+   * Default constructor for House class
    * @param name the name of this house
    * @param address the address of this house
    * @param nFloors the number of floors this house has
@@ -19,7 +20,36 @@ public class House extends Building implements HouseRequirements{
     this.residents = new ArrayList<Student>();
     this.hasDiningRoom = diningRoom;
     this.hasElevator = elevator;
+    this.capacity = -1;
   }
+
+  /* Overloaded constructor that adds a cap to the number of residents */
+  public House(String name, String address, int nFloors, boolean diningRoom, boolean elevator, int cap){
+    super(name, address, nFloors);
+    this.residents = new ArrayList<Student>();
+    this.hasDiningRoom = diningRoom;
+    this.hasElevator = elevator;
+    this.capacity = cap;
+  }
+
+  /* Overloaded constructor that adds a starting list of residents */
+  public House(String name, String address, int nFloors, boolean diningRoom, boolean elevator, ArrayList<Student> students) {
+    super(name, address, nFloors);
+    this.residents = students;
+    this.hasDiningRoom = diningRoom;
+    this.hasElevator = elevator;
+    this.capacity = -1;
+  }
+
+  /* Overloaded constructor that adds a starting list of residents and a cap to the number of residents */
+  public House(String name, String address, int nFloors, boolean diningRoom, boolean elevator, int cap, ArrayList<Student> students){
+    super(name, address, nFloors);
+    this.residents = students;
+    this.hasDiningRoom = diningRoom;
+    this.hasElevator = elevator;
+    this.capacity = cap;
+  }
+
 
   /**
    * Checks if this house has a dining room
@@ -38,11 +68,31 @@ public class House extends Building implements HouseRequirements{
   }
 
   /**
-   * Adds a student to this house's list of residents
+   * Adds a student to this house's list of residents if there's space
    * @param s the student to be added to the house
    */
   public void moveIn(Student s){
-    this.residents.add(s);
+    if(capacity == -1 || this.residents.size() < capacity){
+      this.residents.add(s);
+    }
+    else{
+      System.out.println("Sorry, " + s.getName() + " cannot be added to this house because this house is full.");
+    }
+  }
+
+  /**
+   * Adds multiple students to this house's list of residents as long as there's space
+   * @param students the students to be added to the house
+   */
+  public void moveIn(ArrayList<Student> students){
+    for(Student s: students){
+      if(capacity == -1 || this.residents.size() < capacity){
+        this.residents.add(s);
+      }
+      else{
+        System.out.println("Sorry, " + s.getName() + " cannot be added to this house because this house is full.");
+      }
+    }
   }
 
   /**
@@ -57,6 +107,22 @@ public class House extends Building implements HouseRequirements{
     else{
       return null;
     }
+  }
+
+  /**
+   * Removes multiple students from this house at once as long as the students are in the house
+   * @param students a list of students to be moved out
+   * @return a list of students that have moved out
+   */
+  public ArrayList<Student> moveOut(ArrayList<Student> students){
+    ArrayList<Student> movedOut = new ArrayList<>();
+    for(Student s: students){
+      Student result = this.moveOut(s);
+      if(result != null){
+        movedOut.add(result);
+      }
+    }
+    return movedOut;
   }
 
   /**

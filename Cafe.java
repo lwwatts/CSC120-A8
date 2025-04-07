@@ -8,7 +8,7 @@ public class Cafe extends Building implements CafeRequirements{
     private int nCups; // The number of cups remaining in inventory
 
     /**
-     * Constructor for the Cafe 1
+     * Default constructor for the Cafe class
      * @param name the name of this cafe
      * @param address the address of this cafe
      * @param floors the number of floors this cafe has
@@ -22,16 +22,7 @@ public class Cafe extends Building implements CafeRequirements{
         System.out.println("You have built a cafe: ☕");
     }
     
-    /**
-     * Constructor for the Cafe 2
-     * @param name the name of this cafe
-     * @param address the address of this cafe
-     * @param floors the number of floors this cafe has
-     * @param coffee the amount of coffee in this cafe's inventory in ounces
-     * @param sugar the amount of sugar packets in this cafe's inventory
-     * @param cream the number of "splashes" of cream in this cafe's inventory
-     * @param cups the number of cups in this cafe's inventory
-     */
+    /* Overloaded constructor with number of coffee ounces, sugar packets, cream splashes, and cups */
     public Cafe(String name, String address, int floors, int coffee, int sugar, int cream, int cups) {
         super(name, address, floors);
         this.nCoffeeOunces = coffee;
@@ -53,7 +44,7 @@ public class Cafe extends Building implements CafeRequirements{
         int restock_cream = 0;
         int restock_cups = 0;
         if(this.nCoffeeOunces < size){
-            restock_coffee = 20;
+            restock_coffee = 80;
         }
         if(this.nSugarPackets < nSugarPackets){
             restock_sugar = 20;
@@ -73,6 +64,11 @@ public class Cafe extends Building implements CafeRequirements{
         this.nCreams -= nCreams;
         this.nCups -= 1;
         System.out.println("Coffee sold!");
+    }
+
+    /* Overloaded sellCoffee method that sells a default coffee (12 oz, 1 sugar packet, 2 splashes of cream) */
+    public void sellCoffee(){
+        this.sellCoffee(12, 1, 2);
     }
 
     /**

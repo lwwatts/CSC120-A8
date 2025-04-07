@@ -1,4 +1,5 @@
 import java.util.Hashtable;
+import java.util.ArrayList;
 
 public class Library extends Building implements LibraryRequirements{
 
@@ -7,22 +8,23 @@ public class Library extends Building implements LibraryRequirements{
   private boolean hasElevator;
 
   /**
-   * Constructor for Library class
+   * Default constructor for Library class
    * @param name  the name of this library
    * @param address the address of this library
    * @param nFloors  the number of floors this library has
    */
-  public Library(String name, String address, int nFloors, boolean elevator) {
-    super(name, address, nFloors);
-    this.collection = new Hashtable<>();
-    this.hasElevator = elevator;
-    System.out.println("You have built a library: 📖");
-  }
-
   public Library(String name, String address, int nFloors) {
     super(name, address, nFloors);
     this.collection = new Hashtable<>();
     this.hasElevator = true;
+    System.out.println("You have built a library: 📖");
+  }
+
+  /* Overloaded constructor with choice to include an elevator (default library has an elevator) */
+  public Library(String name, String address, int nFloors, boolean elevator) {
+    super(name, address, nFloors);
+    this.collection = new Hashtable<>();
+    this.hasElevator = elevator;
     System.out.println("You have built a library: 📖");
   }
 
@@ -75,6 +77,13 @@ public class Library extends Building implements LibraryRequirements{
     }
   }
 
+  /* Overloaded checkOut method that lets the user check out a list of titles all at once */
+  public void checkOut(ArrayList<String> titles){
+    for(String title: titles){
+      this.checkOut(title);
+    }
+  }
+
   /**
    * Changes the available status of a book from false to true, if the status is false. Else, prints an error message.
    * @param title the title to be 'returned' to the collection
@@ -91,6 +100,13 @@ public class Library extends Building implements LibraryRequirements{
     }
     else{
       System.out.println("The book " + title + " cannot be returned because it is not in the collection.");
+    }
+  }
+
+  /* Overloaded returnBook method that lets the user return a list of titles all at once */
+  public void returnBook(ArrayList<String> titles){
+    for(String title: titles){
+      this.returnBook(title);
     }
   }
 
