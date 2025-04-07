@@ -45,7 +45,7 @@ public class Cafe extends Building implements CafeRequirements{
         int restock_cups = 0;
         if(this.nCoffeeOunces < size){
             restock_coffee = 80;
-        }
+        } 
         if(this.nSugarPackets < nSugarPackets){
             restock_sugar = 20;
         }

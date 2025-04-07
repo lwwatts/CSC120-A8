@@ -49,8 +49,7 @@ public class Library extends Building implements LibraryRequirements{
       this.collection.remove(title);
       System.out.println("The book " + title + " has been removed from the collection.");
       return title;
-    }
-    else{
+    } else {
       System.out.println("The book " + title + " cannot be removed from the collection because it is not in the collection.");
       return "";
     }
@@ -67,12 +66,10 @@ public class Library extends Building implements LibraryRequirements{
       if(this.collection.get(title)){
         this.collection.replace(title, false);
         System.out.println("The book " + title + " has been checked out.");
-      }
-      else{
+      } else {
         System.out.println("The book " + title + " cannot be checked out because it has already been checked out.");
       }
-    }
-    else{
+    } else {
       System.out.println("The book " + title + " cannot be checked out because it is not in the collection.");
     }
   }
@@ -93,12 +90,10 @@ public class Library extends Building implements LibraryRequirements{
       if(!this.collection.get(title)){
         this.collection.replace(title, true);
         System.out.println("The book " + title + " has been returned.");
-      }
-      else{
+      } else {
         System.out.println("The book " + title + " cannot be returned because it has not been checked out.");
       }
-    }
-    else{
+    } else {
       System.out.println("The book " + title + " cannot be returned because it is not in the collection.");
     }
   }
@@ -127,8 +122,7 @@ public class Library extends Building implements LibraryRequirements{
   public boolean isAvailable(String title){
     if(this.containsTitle(title)){
       return this.collection.get(title);
-    }
-    else{
+    } else{
       return false;
     }
   }
@@ -140,8 +134,7 @@ public class Library extends Building implements LibraryRequirements{
     for(String title : collection.keySet()){
       if(this.isAvailable(title)){
         System.out.println(title + ": available");
-      }
-      else{
+      } else{
         System.out.println(title + ": checked out");
       }
     }

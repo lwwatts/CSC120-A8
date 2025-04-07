@@ -75,8 +75,7 @@ public class House extends Building implements HouseRequirements{
     if(capacity == -1 || this.residents.size() < capacity){
       this.residents.add(s);
       System.out.println(s.getName() + " has moved into " + this.name);
-    }
-    else{
+    } else{
       System.out.println("Sorry, " + s.getName() + " cannot be added to this house because this house is full.");
     }
   }
@@ -90,8 +89,7 @@ public class House extends Building implements HouseRequirements{
       if(capacity == -1 || this.residents.size() < capacity){
         this.residents.add(s);
         System.out.println(s.getName() + " has moved into " + this.name);
-      }
-      else{
+      } else{
         System.out.println("Sorry, " + s.getName() + " cannot be added to this house because this house is full.");
       }
     }
@@ -106,8 +104,7 @@ public class House extends Building implements HouseRequirements{
       this.residents.remove(s);
       System.out.println(s.getName() + " has moved out of " + this.name);
       return s;
-    }
-    else{
+    } else{
       System.out.println(s.getName() + " cannot move out of " + this.name + " because they do not live there");
       return null;
     }
